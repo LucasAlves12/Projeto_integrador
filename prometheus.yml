@@ -1,0 +1,9 @@
+global:
+  scrape_interval: 5s  # coleta a cada 5 segundos
+
+scrape_configs:
+  - job_name: "votacao"
+    metrics_path: "/metrics"
+    static_configs:
+      - targets:
+          - "votacao:5000"

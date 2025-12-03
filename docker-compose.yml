@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+
+  votacao:
+    build: .
+    container_name: votacao
+    ports:
+      - "5000:5000"
+    networks:
+      - monitoramento
+
+  prometheus:
+    image: prom/prometheus:latest
+    container_name: prometheus
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitoramento
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - monitoramento
+
+networks:
+  monitoramento:
+    driver: bridge
