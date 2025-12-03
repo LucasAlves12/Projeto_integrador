@@ -1,0 +1,10 @@
+stages:
+  - test
+
+python_syntax_check:
+  stage: test
+  image: python:3.9-slim
+  script:
+    - python -m py_compile app.py
+  only:
+    - main
