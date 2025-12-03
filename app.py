@@ -9,9 +9,7 @@ VOTOS = Counter('app_votos_total', 'Total de votos computados',
 
 @app.route('/')
 def home():
-    return "<h1>Sistema de Votação</h1><p>Vote acessando: <a
-href='/votar/a'>/votar/a</a> ou <a
-href='/votar/b'>/votar/b</a></p>"
+    return "<h1>Sistema de Votação</h1><p>Vote acessando: <ahref='/votar/a'>/votar/a</a> ou <ahref='/votar/b'>/votar/b</a></p>"
 
 @app.route('/votar/<opcao>')
 def votar(opcao):
@@ -24,6 +22,6 @@ def votar(opcao):
 def metrics():
     # Rota que expõe as métricas para o Prometheus
     return Response(generate_latest(), mimetype='text/plain')
-    
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
